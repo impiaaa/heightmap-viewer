@@ -24,3 +24,8 @@ int SfmlLoader::valueAt(int x, int y)
 {
     return myImage.getPixel(x, y).r;
 }
+
+bool SfmlLoader::existsAt(int x, int y)
+{
+    return myImage.getPixel(x, y).a > 0;
+}

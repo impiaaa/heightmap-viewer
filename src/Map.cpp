@@ -9,8 +9,8 @@
 
 Map::Map(const std::string& filename, const std::string& textureName) :
 myLoader(new SfmlLoader),    // TODO use a real factory or media manager (more flexibility)
-myPrecision(5),
-myHeightFactor(0.2f),   // TODO no default values
+myPrecision(1),
+myHeightFactor(1.0f),   // TODO no default values
 myTexture(0)
 {
     myLoader->load(filename);
@@ -60,6 +60,15 @@ void Map::compile()
             
             float xVal = static_cast<float>(x);
             float zVal = static_cast<float>(z);
+            
+            if (!myLoader->existsAt(x, z))
+                continue;
+            if (!myLoader->existsAt(x + myPrecision, z))
+                continue;
+            if (!myLoader->existsAt(x, z + myPrecision))
+                continue;
+            if (!myLoader->existsAt(x + myPrecision, z + myPrecision))
+                continue;
 
             // Vertex coordinates
             sf::Vector3f v1(xVal, myLoader->valueAt(x, z) * myHeightFactor, zVal);

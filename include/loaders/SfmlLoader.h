@@ -13,6 +13,7 @@ class SfmlLoader : public ILoader
 
         virtual void load(const std::string& filename);
         virtual int valueAt(int x, int y);
+        virtual bool existsAt(int x, int y);
 
     private:
 

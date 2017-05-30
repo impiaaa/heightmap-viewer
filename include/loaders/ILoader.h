@@ -12,6 +12,7 @@ class ILoader
 
         virtual void load(const std::string& filename) = 0;
         virtual int valueAt(int x, int y) = 0;
+        virtual bool existsAt(int x, int y) = 0;
 
         unsigned int getWidth() { return myWidth; };
         unsigned int getHeight() { return myHeight; };
