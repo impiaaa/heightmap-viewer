@@ -6,11 +6,12 @@ Application::Application() :
 myWindow(sf::VideoMode(800, 600), "Heightmap 3D Viewer")
 {
     myWindow.setVerticalSyncEnabled(true);
-    myWindow.setMouseCursorVisible(false);
+    //myWindow.setMouseCursorVisible(false);
 }
 
 void Application::run()
 {
+    sf::Vector2i lastMouse;
     while(myWindow.isOpen())
     {
         // TODO create a separated event manager
@@ -32,7 +33,7 @@ void Application::run()
 
             if(event.type == sf::Event::MouseMoved)
             {
-                sf::Vector2i winCenter(myWindow.getSize().x / 2, myWindow.getSize().y / 2);
+                /*sf::Vector2i winCenter(myWindow.getSize().x / 2, myWindow.getSize().y / 2);
                 
                 if(event.mouseMove.x != winCenter.x || event.mouseMove.y != winCenter.y)
                 {
@@ -40,7 +41,11 @@ void Application::run()
 
                     mouseDelta.x = event.mouseMove.x - winCenter.x;
                     mouseDelta.y = event.mouseMove.y - winCenter.y;
-                }
+                }*/
+                mouseDelta.x = event.mouseMove.x - lastMouse.x;
+                mouseDelta.y = event.mouseMove.y - lastMouse.y;
+                lastMouse.x = event.mouseMove.x;
+                lastMouse.y = event.mouseMove.y;
             }
         }
 

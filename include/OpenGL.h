@@ -8,5 +8,10 @@
     #include <Windows.h>
 #endif
 
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#endif
